@@ -35,12 +35,15 @@ object Versions {
 
     const val material = "1.2.1"
 
+    const val compose_version = "1.0.0-beta07"
+
     object AndroidX {
         const val annotation = "1.1.0"
-        const val appcompat = "1.2.0"
+        const val appcompat = "1.3.0"
         const val browser = "1.3.0"
         const val biometric = "1.1.0"
         const val cardview = "1.0.0"
+        const val compose = compose_version
         const val constraintlayout = "2.0.4"
         const val coordinatorlayout = "1.1.0"
         const val core = "1.3.2"
@@ -89,6 +92,11 @@ object Dependencies {
     const val androidx_biometric = "androidx.biometric:biometric:${Versions.AndroidX.biometric}"
     const val androidx_browser = "androidx.browser:browser:${Versions.AndroidX.browser}"
     const val androidx_cardview = "androidx.cardview:cardview:${Versions.AndroidX.cardview}"
+    const val androidx_compose_ui = "androidx.compose.ui:ui:${Versions.AndroidX.compose}"
+    const val androidx_compose_ui_test = "androidx.compose.ui:ui-test-junit4:${Versions.AndroidX.compose}"
+    const val androidx_compose_ui_tooling = "androidx.compose.ui:ui-tooling:${Versions.AndroidX.compose}"
+    const val androidx_compose_foundation = "androidx.compose.foundation:foundation:${Versions.AndroidX.compose}"
+    const val androidx_compose_material = "androidx.compose.material:material:${Versions.AndroidX.compose}"
     const val androidx_constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.constraintlayout}"
     const val androidx_core = "androidx.core:core:${Versions.AndroidX.core}"
     const val androidx_core_ktx = "androidx.core:core-ktx:${Versions.AndroidX.core}"
