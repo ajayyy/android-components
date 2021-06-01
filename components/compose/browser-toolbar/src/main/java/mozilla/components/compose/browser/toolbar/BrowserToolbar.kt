@@ -4,8 +4,14 @@
 
 package mozilla.components.compose.browser.toolbar
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import mozilla.components.browser.state.selector.selectedTab
+import mozilla.components.browser.state.store.BrowserStore
+import mozilla.components.feature.session.SessionUseCases
+import mozilla.components.lib.state.ext.observeAsState
 
 /**
  * A customizable toolbar for browsers.
@@ -15,6 +21,25 @@ import androidx.compose.runtime.Composable
  * implemented by the [BrowserDisplayToolbar] and [BrowserEditToolbar] composables.
  */
 @Composable
-fun BrowserToolbar() {
-    Text("I am a toolbar")
+fun BrowserToolbar(
+    store: BrowserStore,
+    useCases: SessionUseCases
+) {
+    val url: String? by store.observeAsState { state -> state.selectedTab?.content?.url }
+    val editMode = remember { mutableStateOf(false) }
+
+    if (editMode.value) {
+        BrowserEditToolbar(
+            url = url ?: "<empty>",
+            onUrlCommitted = { text ->
+                useCases.loadUrl(text)
+                editMode.value = false
+            }
+        )
+    } else {
+        BrowserDisplayToolbar(
+            url = url ?: "<empty>",
+            onUrlClicked = { editMode.value = true }
+        )
+    }
 }

@@ -4,8 +4,26 @@
 
 package mozilla.components.compose.browser.toolbar
 
+import androidx.compose.foundation.clickable
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 
+/**
+ * Sub-component of the [BrowserToolbar] responsible for displaying the URL and related
+ * controls ("display mode").
+ *
+ * @param url The URL to be displayed.
+ * @param onUrlClicked Will be called when the user clicks on the URL.
+ */
 @Composable
-fun BrowserDisplayToolbar() {
+fun BrowserDisplayToolbar(
+    url: String,
+    onUrlClicked: () -> Unit = {}
+) {
+    Text(
+        url,
+        modifier = Modifier.clickable { onUrlClicked() },
+        maxLines = 1
+    )
 }
