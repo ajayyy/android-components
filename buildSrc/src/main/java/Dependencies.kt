@@ -38,6 +38,7 @@ object Versions {
     const val compose_version = "1.0.0-beta07"
 
     object AndroidX {
+        const val activityCompose = "1.3.0-alpha08"
         const val annotation = "1.1.0"
         const val appcompat = "1.3.0"
         const val browser = "1.3.0"
@@ -85,6 +86,7 @@ object Dependencies {
     const val testing_maven_ant_tasks = "org.apache.maven:maven-ant-tasks:${Versions.maven_ant_tasks}"
     const val testing_leakcanary = "com.squareup.leakcanary:leakcanary-android-instrumentation:${Versions.leakcanary}"
 
+    const val androidx_activity_compose = "androidx.activity:activity-compose:${Versions.AndroidX.activityCompose}"
     const val androidx_annotation = "androidx.annotation:annotation:${Versions.AndroidX.annotation}"
     const val androidx_appcompat = "androidx.appcompat:appcompat:${Versions.AndroidX.appcompat}"
     const val androidx_arch_core_common = "androidx.arch.core:core-common:${Versions.AndroidX.arch}"

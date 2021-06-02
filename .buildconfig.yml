@@ -411,6 +411,10 @@ projects:
     path: samples/browser
     description: 'A simple browser composed from browser components.'
     publish: false
+  samples-compose-browser:
+    path: samples/compose-browser
+    description: 'A simple browser composed from browser components using Jetpack Compose.'
+    publish: false
   samples-crash:
     path: samples/crash
     description: 'An app showing the integration of the lib-crash component.'

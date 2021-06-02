@@ -47,7 +47,6 @@ dependencies {
     testImplementation Dependencies.testing_robolectric
     testImplementation Dependencies.testing_mockito
 
-    androidTestImplementation project(":browser-session")
     androidTestImplementation Dependencies.androidx_test_junit
     androidTestImplementation Dependencies.androidx_compose_ui_test_manifest
     androidTestImplementation Dependencies.androidx_compose_ui_test
