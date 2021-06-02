@@ -7,6 +7,10 @@ projects:
     path: components/compose/browser-toolbar
     description: 'A customizable toolbar for browsers using Jetpack Compose.'
     publish: true
+  compose-engine:
+    path: components/compose/engine
+    description: 'A component for integrating a concept-engine implementation into Jetpack Compose UI.'
+    publish: true
   concept-awesomebar:
     path: components/concept/awesomebar
     description: 'An abstract definition of an awesomebar component.'

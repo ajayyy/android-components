@@ -22,6 +22,8 @@ treeherder:
         browser-tabstray: browser-tabstray
         browser-thumbnails: browser-thumbnails
         browser-toolbar: browser-toolbar
+        compose-browser-toolbar: compose-browser-toolbar
+        compose-engine: compose-engine
         concept-awesomebar: concept-awesomebar
         concept-base: concept-base
         concept-engine: concept-engine
