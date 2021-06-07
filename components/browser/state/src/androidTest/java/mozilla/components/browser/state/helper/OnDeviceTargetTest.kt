@@ -21,10 +21,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * On-device tests for [TargetTab].
+ * On-device tests for [Target].
  */
 @RunWith(AndroidJUnit4::class)
-class OnDeviceTargetTabTest {
+class OnDeviceTargetTest {
     @get:Rule
     val rule = createComposeRule()
 
@@ -32,7 +32,7 @@ class OnDeviceTargetTabTest {
     fun observingSelectedTab() {
         val store = BrowserStore()
 
-        val target = TargetTab.Selected
+        val target = Target.SelectedTab
         var observedTabId: String? = null
 
         rule.setContent {
@@ -96,7 +96,7 @@ class OnDeviceTargetTabTest {
             )
         )
 
-        val target = TargetTab.Pinned("mozilla")
+        val target = Target.Tab("mozilla")
         var observedTabId: String? = null
 
         rule.setContent {
@@ -137,7 +137,7 @@ class OnDeviceTargetTabTest {
             )
         )
 
-        val target = TargetTab.Custom("reddit")
+        val target = Target.CustomTab("reddit")
 
         var observedTabId: String? = null
 

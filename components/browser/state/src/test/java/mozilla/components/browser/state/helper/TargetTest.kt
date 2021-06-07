@@ -14,7 +14,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 
-class TargetTabTest {
+class TargetTest {
     @Test
     fun lookupInStore() {
         val store = BrowserStore(
@@ -33,38 +33,38 @@ class TargetTabTest {
 
         assertEquals(
             "https://www.mozilla.org",
-            TargetTab.Selected.lookupIn(store)?.content?.url
+            Target.SelectedTab.lookupIn(store)?.content?.url
         )
 
         assertEquals(
             "https://www.mozilla.org",
-            TargetTab.Pinned("mozilla").lookupIn(store)?.content?.url
+            Target.Tab("mozilla").lookupIn(store)?.content?.url
         )
 
         assertEquals(
             "https://theverge.com",
-            TargetTab.Pinned("theverge").lookupIn(store)?.content?.url
+            Target.Tab("theverge").lookupIn(store)?.content?.url
         )
 
         assertNull(
-            TargetTab.Pinned("unknown").lookupIn(store)
+            Target.Tab("unknown").lookupIn(store)
         )
 
         assertNull(
-            TargetTab.Pinned("reddit").lookupIn(store)
+            Target.Tab("reddit").lookupIn(store)
         )
 
         assertEquals(
             "https://www.reddit.com/r/firefox/",
-            TargetTab.Custom("reddit").lookupIn(store)?.content?.url
+            Target.CustomTab("reddit").lookupIn(store)?.content?.url
         )
 
         assertNull(
-            TargetTab.Custom("unknown").lookupIn(store)
+            Target.CustomTab("unknown").lookupIn(store)
         )
 
         assertNull(
-            TargetTab.Custom("mozilla").lookupIn(store)
+            Target.CustomTab("mozilla").lookupIn(store)
         )
 
         store.dispatch(
@@ -73,7 +73,7 @@ class TargetTabTest {
 
         assertEquals(
             "https://www.example.org",
-            TargetTab.Selected.lookupIn(store)?.content?.url
+            Target.SelectedTab.lookupIn(store)?.content?.url
         )
 
         store.dispatch(
@@ -81,7 +81,7 @@ class TargetTabTest {
         ).joinBlocking()
 
         assertNull(
-            TargetTab.Selected.lookupIn(store)
+            Target.SelectedTab.lookupIn(store)
         )
     }
 
@@ -101,38 +101,38 @@ class TargetTabTest {
 
         assertEquals(
             "https://www.mozilla.org",
-            TargetTab.Selected.lookupIn(state)?.content?.url
+            Target.SelectedTab.lookupIn(state)?.content?.url
         )
 
         assertEquals(
             "https://www.mozilla.org",
-            TargetTab.Pinned("mozilla").lookupIn(state)?.content?.url
+            Target.Tab("mozilla").lookupIn(state)?.content?.url
         )
 
         assertEquals(
             "https://theverge.com",
-            TargetTab.Pinned("theverge").lookupIn(state)?.content?.url
+            Target.Tab("theverge").lookupIn(state)?.content?.url
         )
 
         assertNull(
-            TargetTab.Pinned("unknown").lookupIn(state)
+            Target.Tab("unknown").lookupIn(state)
         )
 
         assertNull(
-            TargetTab.Pinned("reddit").lookupIn(state)
+            Target.Tab("reddit").lookupIn(state)
         )
 
         assertEquals(
             "https://www.reddit.com/r/firefox/",
-            TargetTab.Custom("reddit").lookupIn(state)?.content?.url
+            Target.CustomTab("reddit").lookupIn(state)?.content?.url
         )
 
         assertNull(
-            TargetTab.Custom("unknown").lookupIn(state)
+            Target.CustomTab("unknown").lookupIn(state)
         )
 
         assertNull(
-            TargetTab.Custom("mozilla").lookupIn(state)
+            Target.CustomTab("mozilla").lookupIn(state)
         )
     }
 }

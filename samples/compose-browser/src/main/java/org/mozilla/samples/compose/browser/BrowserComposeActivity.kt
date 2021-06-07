@@ -9,7 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import components
-import mozilla.components.browser.state.helper.TargetTab
+import mozilla.components.browser.state.helper.Target
 import mozilla.components.compose.browser.toolbar.BrowserToolbar
 import mozilla.components.compose.engine.WebContent
 
@@ -26,7 +26,7 @@ class BrowserComposeActivity : AppCompatActivity() {
                 WebContent(
                     components.engine,
                     components.store,
-                    TargetTab.Selected
+                    Target.SelectedTab
                 )
             }
         }

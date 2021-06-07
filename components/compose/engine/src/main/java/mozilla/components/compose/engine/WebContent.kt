@@ -9,22 +9,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import mozilla.components.browser.state.action.EngineAction
-import mozilla.components.browser.state.helper.TargetTab
+import mozilla.components.browser.state.helper.Target
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.Engine
 import mozilla.components.concept.engine.EngineView
 
 /**
  * Composes an [EngineView] obtained from the given [Engine] and renders the web content of the
- * [targetTab] from the [store] on it.
+ * [target] from the [store] on it.
  */
 @Composable
 fun WebContent(
     engine: Engine,
     store: BrowserStore,
-    targetTab: TargetTab
+    target: Target
 ) {
-    val selectedTab = targetTab.observeAsStateFrom(
+    val selectedTab = target.observeAsStateFrom(
         store = store,
         observe = { tab ->
             // Render if the tab itself changed or when the state of the linked engine session changes

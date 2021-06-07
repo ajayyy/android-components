@@ -22,7 +22,7 @@ import mozilla.components.lib.state.ext.observeAsState
  * the selected tab, a specific pinned tab or a custom tab). Additional helper methods make it
  * easier to lookup the current state of the tab or observe changes.
  */
-sealed class TargetTab {
+sealed class Target {
     /**
      * Looks up this target in the given [BrowserStore] and returns the matching [SessionState] if
      * available. Otherwise returns `null`.
@@ -58,7 +58,7 @@ sealed class TargetTab {
     /**
      * Targets the selected tab.
      */
-    object Selected : TargetTab() {
+    object SelectedTab : Target() {
         override fun lookupIn(state: BrowserState): SessionState? {
             return state.selectedTab
         }
@@ -67,7 +67,7 @@ sealed class TargetTab {
     /**
      * Targets a specific tab by its [tabId].
      */
-    class Pinned(val tabId: String) : TargetTab() {
+    class Tab(val tabId: String) : Target() {
         override fun lookupIn(state: BrowserState): SessionState? {
             return state.findTab(tabId)
         }
@@ -76,7 +76,7 @@ sealed class TargetTab {
     /**
      * Targets a specific custom tab by its [customTabId].
      */
-    class Custom(val customTabId: String) : TargetTab() {
+    class CustomTab(val customTabId: String) : Target() {
         override fun lookupIn(state: BrowserState): SessionState? {
             return state.findCustomTab(customTabId)
         }
