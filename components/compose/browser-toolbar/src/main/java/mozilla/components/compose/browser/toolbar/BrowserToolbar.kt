@@ -8,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import mozilla.components.browser.state.selector.selectedTab
+import mozilla.components.browser.state.helper.Target
+import mozilla.components.browser.state.state.SessionState
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.feature.session.SessionUseCases
-import mozilla.components.lib.state.ext.observeAsState
 
 /**
  * A customizable toolbar for browsers.
@@ -23,14 +23,18 @@ import mozilla.components.lib.state.ext.observeAsState
 @Composable
 fun BrowserToolbar(
     store: BrowserStore,
-    useCases: SessionUseCases
+    useCases: SessionUseCases,
+    target: Target
 ) {
-    val url: String? by store.observeAsState { state -> state.selectedTab?.content?.url }
     val editMode = remember { mutableStateOf(false) }
+    val selectedTab: SessionState? by target.observeAsStateFrom(
+        store = store,
+        observe = { tab -> tab?.content?.url }
+    )
 
     if (editMode.value) {
         BrowserEditToolbar(
-            url = url ?: "<empty>",
+            url = selectedTab?.content?.url ?: "<empty>",
             onUrlCommitted = { text ->
                 useCases.loadUrl(text)
                 editMode.value = false
@@ -38,7 +42,7 @@ fun BrowserToolbar(
         )
     } else {
         BrowserDisplayToolbar(
-            url = url ?: "<empty>",
+            url = selectedTab?.content?.url ?: "<empty>",
             onUrlClicked = { editMode.value = true }
         )
     }

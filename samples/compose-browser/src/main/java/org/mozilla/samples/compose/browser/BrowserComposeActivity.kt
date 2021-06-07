@@ -22,7 +22,11 @@ class BrowserComposeActivity : AppCompatActivity() {
 
         setContent {
             Column {
-                BrowserToolbar(components.store, components.sessionUseCases)
+                BrowserToolbar(
+                    components.store,
+                    components.sessionUseCases,
+                    Target.SelectedTab
+                )
                 WebContent(
                     components.engine,
                     components.store,
